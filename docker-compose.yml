@@ -1,0 +1,19 @@
+version: '3.8'
+
+services:
+  pushtutor:
+    build: .
+    container_name: pushtutor
+    restart: unless-stopped
+    env_file:
+      - .env
+    volumes:
+      - ./logs:/app/logs
+      - ./pushtutor.db:/app/pushtutor.db
+      - ./userbot_session.session:/app/userbot_session.session
+    networks:
+      - pushtutor_network
+
+networks:
+  pushtutor_network:
+    driver: bridge

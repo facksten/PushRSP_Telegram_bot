@@ -1,0 +1,19 @@
+[Unit]
+Description=PushTutor - Telegram Learning Assistant Bot
+After=network.target
+
+[Service]
+Type=simple
+User=YOUR_USERNAME
+WorkingDirectory=/path/to/pushtutor
+Environment="PATH=/path/to/pushtutor/venv/bin"
+ExecStart=/path/to/pushtutor/venv/bin/python main.py
+Restart=always
+RestartSec=10
+
+# Logging
+StandardOutput=append:/path/to/pushtutor/logs/systemd.log
+StandardError=append:/path/to/pushtutor/logs/systemd_error.log
+
+[Install]
+WantedBy=multi-user.target
